@@ -1,9 +1,12 @@
 <template>
     <div class="v-catalog-item">
-        <img src="" alt="img">
-        <p>Item 1</p>
-        <p>Price: 100</p>
-        <button>Add to cart</button>
+        <img class="v-catalog-item__image" src="../assets/crossfashion_567d68020065c6f6f1dbb9c0eb789375.jpg" alt="img">
+        <p class="v-catalog-item__name">{{ product_data.name }}</p>
+        <p class="v-catalog-item__price">Price: {{ Math.round(product_data.price) }} LT</p>
+        <button 
+            class="v-catalog-item__add_to_cart_btn btn" 
+            @click="sendDataToParent"
+            >Add to cart</button>
     </div>
 </template>
 
@@ -25,17 +28,26 @@
             }
         },
         computed: {},
-        methods: {},
+        methods: {
+            sendDataToParent() {
+                this.$emit('sendDataToParent', this.product_data.article)
+            }
+        },
         watch: {},
     }
 </script>
 
 <style lang="scss">
+    .v-catalog-item__image {
+        width: 100px;
+    }
 
     .v-catalog-item{
-       flex-basis: 25%;
-       box-shadow: 0 0 8px 0 #e0e0e0;
-       padding: 16px;
-       margin-bottom: 16px;
+        display: block;
+        width: 250px;
+        flex-basis: 25%;
+        box-shadow: 0 0 8px 0 #e0e0e0;
+        padding: 16px;
+        margin-bottom: 16px;
     }
 </style>

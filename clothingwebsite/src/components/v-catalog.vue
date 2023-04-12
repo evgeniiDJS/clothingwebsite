@@ -1,10 +1,11 @@
 <template>
+    <h1>Catalog</h1>
     <div class="v-catalog">
-        <h1>Catalog</h1>
         <v-catalog-item
             v-for="product in products"
             :key="product.article"
-            v-bind:product_data="product" 
+            v-bind:product_data="product"
+            @sendDataToParent="showChildArticleConsole" 
         />
     </div>
 </template>
@@ -73,15 +74,20 @@
             }
         },
         computed: {},
-        methods: {},
+        methods: {
+            showChildArticleConsole(data) {
+                console.log(data)
+            }
+        },
         watch: {},
     }
 </script>
 
 <style>
     .v-catalog{
-       flex-wrap: wrap;
-       justify-content: space-between;
-       align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
     }
 </style>
